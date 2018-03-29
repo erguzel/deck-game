@@ -3,8 +3,17 @@ package app.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 public class Player {
+
+    public String get_name() {
+        return _name;
+    }
+
+    public int get_Id() {
+        return _Id;
+    }
 
     private String _name;
 
@@ -35,14 +44,54 @@ public class Player {
     /*
     Gets a card passed by dealer
      */
-    public void acceptCard(Card card){
+    public void acceptCard(Card card) {
 
         this._hand.add(card);
 
     }
 
-    public Player(String _name, int _Id) {
-        this._name = _name;
+    public Card throwCard() {
+
+       return _hand.pop();
+    }
+
+    public Card throwCardByRule(Card previousCard) throws Exception {
+
+        throw new Exception("not implemented");
+
+    }
+
+    public Player(Integer _Id) {
+
+        this._name = Player.class.getName().concat(_Id.toString());
         this._Id = _Id;
     }
+
+    public void addPile(List<Card> crds){
+
+        _pile.addAll(crds);
+    }
+
+    @Override
+    public String toString() {
+
+        return this.get_name();
+
+    }
+
+    private int totalLuckyTours;
+
+    public void incrementLuckyTourNumber(){
+        totalLuckyTours ++;
+    }
+
+    public int getTotalLuckyTours(){
+        return totalLuckyTours;
+    }
+
+    public int getTotalCardsCollected(){
+
+        return _pile.size();
+    }
 }
+
