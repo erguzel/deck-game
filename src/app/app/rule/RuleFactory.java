@@ -14,6 +14,9 @@ public class RuleFactory {
             case SimpleWinner:
                 return new SimpleWinnerRule();
 
+            case SimpleWinnerIntelligent:
+                return new SameCardWinsIntelligentRule();
+
             default:
                break;
         }

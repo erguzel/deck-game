@@ -13,7 +13,7 @@ public class Run {
 
         Controller.Initialize(args);
 
-        Controller.Configure(RuleFactory.CreateRule(RuleTypes.SameCardWins));
+        Controller.Configure(RuleFactory.CreateRule(RuleTypes.SimpleWinnerIntelligent));
 
         Controller.StartGame();
 
