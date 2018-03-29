@@ -8,11 +8,21 @@ import java.util.List;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
+/*
+Represents a game rule:
+Each player throws their card according to the previous player card;
+if the same card exist in hand, next player throws it and win the points
+otherwise pops a next card in hand.
+Process runs till all player cards consumed.
+ */
 public class SameCardWinsIntelligentRule implements IRule {
+
     @Override
     public void Execute(List<Player> players, Stack<Card> gameObject) {
         Card playerCard = null;
-
+        /*
+        run logic till the last card of last player
+         */
         while (players.get(players.size() - 1).get_hand().size() != 0) {
 
             for (Player pl : players) {
@@ -40,10 +50,16 @@ public class SameCardWinsIntelligentRule implements IRule {
 
                     gameObject.add(winnerCard);
 
+                    /*
+                    Add the throwed cards to winner players pocket
+                     */
                     pl.addPile(gameObject.stream().collect(Collectors.toList()));
 
                     pl.incrementLuckyTourNumber();
 
+                    /*
+                    If there are only two cards on table, that is considered as bonus which represents extra point
+                     */
                     if (gameObject.size() == 2) {
 
                         System.out.println(pl.toString() + " also made a bonus point");

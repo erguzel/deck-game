@@ -11,36 +11,72 @@ import java.util.*;
 import java.util.concurrent.LinkedTransferQueue;
 import java.util.stream.Collectors;
 
+/*
+Represents the main controller of all dynammic units of the application
+ */
 public class Controller {
-
+    /*
+    For now the game is played by 52 unique deck cards
+     */
+    private static final int _DeckSize = 52;
+    /*
+    Each group contains 13 different card rank/numbers by definition (hearts-diamonds...)
+     */
+    private static final int _GroupSize = 13;
+    /*
+Represents the player boots playing the game.
+    */
+    private static List<Player> _players = new ArrayList<Player>();
+    /*
+    Represents a game rule
+     */
     private static IRule _gameRule;
+    /*
+    Represents number of total players
+     */
+    private static int numOfPlayers;
+    /*
+    Boolean swithch to whether show the game results on screen after game.
+     */
+    private static boolean _isStatisticalMode;
 
+    /*
+    Gets number of players included in game.
+     */
     public static int getNumOfPlayers() {
         return numOfPlayers;
     }
 
+    /*
+    Sets the number of players included in game.
+     */
     public static void setNumOfPlayers(int numOfPlayers) {
         Controller.numOfPlayers = numOfPlayers;
     }
 
-    private static int numOfPlayers;
+    /*
+    Represents a genuine deck card bundle.
+     */
     private static Stack<Card> _bundle = new Stack<Card>();
 
+    /*
+    Gets current game members/players.
+     */
     public static List<Player> get_players() {
         return _players;
     }
 
-    private static List<Player> _players = new ArrayList<Player>();
-
-    private static final int _DeckSize = 52;
-    private static final int _GroupSize = 13;
-
+    /*
+    Initializes the program for parameters and the Deck for the cards.
+     */
     public static void Initialize(String[] args) throws Exception {
 
         CmdParser c = new CmdParser(args);
         createDeck();
     }
-
+    /*
+    Configures the rule that the game will be implementing.
+     */
     public static void Configure(IRule rule) {
 
         _gameRule = rule;
@@ -49,12 +85,18 @@ public class Controller {
 
     }
 
+    /*
+    Starts the game with the choosen rule.
+     */
     public static void StartGame() {
 
         _gameRule.Execute(_players, _bundle);
 
     }
 
+    /*
+    Sets the boot players.
+     */
     private static void setPlayers() {
 
         for (int i = 0; i < Controller.getNumOfPlayers(); i++) {
@@ -65,6 +107,9 @@ public class Controller {
 
     }
 
+    /*
+    Creates a unique deck using random number generation approach.
+     */
     private static void createDeck() {
 
 
@@ -104,17 +149,24 @@ public class Controller {
 
 
     }
-
+    /*
+    Gets the genuine card bundle.
+     */
     public static Stack<Card> getBundle() {
         return _bundle;
     }
-
+    /*
+    Pops a card in the stack collection.
+     */
     public static Card popCard() {
 
         return _bundle.pop();
 
     }
 
+    /*
+    Pass the genuine numbers among the number of players.
+     */
     private static void passCards(Stack<Card> deckk) {
 
         for (int a = 0; a < Controller._DeckSize; a++) {
@@ -129,32 +181,39 @@ public class Controller {
 
     }
 
-
-    private static boolean _isStatisticalMode;
-
-    public static boolean getIsStatisticalMode(){
+    /*
+    Gets the boolean determining if the game status display is on.
+     */
+    public static boolean getIsStatisticalMode() {
         return _isStatisticalMode;
     }
-
-    public static void setIsStatisticalMode(boolean isStatisticalMode){
+    /*
+    Sets the boolean determining if the game status display is on.
+     */
+    public static void setIsStatisticalMode(boolean isStatisticalMode) {
         _isStatisticalMode = isStatisticalMode;
     }
 
-
+    /*
+    Prints the player statistics recorded during a unique game.
+     */
     public static void RunStatistics() {
 
         System.out.println("PlayerName      TotalLuckyTours     TotalCollectedCards     TotalBonusPoints");
 
         for (Player pls : _players) {
 
-            System.out.println(pls.get_name()+"      " + pls.getTotalLuckyTours() + "               " + pls.getTotalCardsCollected()+"                                 "+ pls.getbonusPoint());
+            System.out.println(pls.get_name() + "      " + pls.getTotalLuckyTours() + "               " + pls.getTotalCardsCollected() + "                                 " + pls.getbonusPoint());
 
         }
 
 
     }
 
-    public static class RuleController{
+    /*
+    Represents the rule generic logics can be used in different rule implementation.
+     */
+    public static class RuleController {
 
         public static RuleTypes get_rtype() {
             return _rtype;

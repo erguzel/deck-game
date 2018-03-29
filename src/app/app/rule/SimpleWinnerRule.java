@@ -9,6 +9,12 @@ import app.core.Controller;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/*
+Represents a game rule:
+Each player throws their card first,
+Than whose card is the biggest numbered, it wins
+Process runs till all player cards consumed
+ */
 public class SimpleWinnerRule implements IRule{
 
 

@@ -8,6 +8,12 @@ import app.model.Player;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/*
+Represents a game rule:
+Each player pops their card without thinking,
+If the card number matches the previous car number, the player wins the cards on table.
+Process runs till all player cards consumed.
+ */
 public class SameCardWinsRule implements IRule{
 
     @Override

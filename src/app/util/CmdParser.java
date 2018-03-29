@@ -5,6 +5,10 @@ import app.core.Controller;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Represents the commandline parsing util.
+TODO: parametize Rule selection from commandline
+ */
 public class CmdParser {
 
     private int numberOfPlayers;
