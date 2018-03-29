@@ -2,6 +2,7 @@ package app.core;
 
 import app.abstraction.IRule;
 import app.enumic.CardTypes;
+import app.enumic.RuleTypes;
 import app.model.Card;
 import app.model.Player;
 import app.util.CmdParser;
@@ -23,7 +24,7 @@ public class Controller {
     }
 
     private static int numOfPlayers;
-    private static Queue<Card> _bundle = new LinkedTransferQueue<Card>();
+    private static Stack<Card> _bundle = new Stack<Card>();
 
     public static List<Player> get_players() {
         return _players;
@@ -50,7 +51,7 @@ public class Controller {
 
     public static void StartGame() {
 
-        _gameRule.Execute(_players, _bundle.stream().collect(Collectors.toList()));
+        _gameRule.Execute(_players, _bundle);
 
     }
 
@@ -104,23 +105,23 @@ public class Controller {
 
     }
 
-    public static Queue<Card> getBundle() {
+    public static Stack<Card> getBundle() {
         return _bundle;
     }
 
-    public static Card pollCard() {
+    public static Card popCard() {
 
-        return _bundle.poll();
+        return _bundle.pop();
 
     }
 
-    private static void passCards(Queue<Card> deckk) {
+    private static void passCards(Stack<Card> deckk) {
 
         for (int a = 0; a < Controller._DeckSize; a++) {
 
             int playerIndex = a % Controller.numOfPlayers;
 
-            _players.get(playerIndex).acceptCard(deckk.poll());
+            _players.get(playerIndex).acceptCard(deckk.pop());
 
         }
 
@@ -142,15 +143,28 @@ public class Controller {
 
     public static void RunStatistics() {
 
-        System.out.println("PlayerName      TotalLuckyTours     TotalCollectedCards");
+        System.out.println("PlayerName      TotalLuckyTours     TotalCollectedCards     TotalBonusPoints");
 
         for (Player pls : _players) {
 
-            System.out.println(pls.get_name()+"      " + pls.getTotalLuckyTours() + "               " + pls.getTotalCardsCollected());
+            System.out.println(pls.get_name()+"      " + pls.getTotalLuckyTours() + "               " + pls.getTotalCardsCollected()+"                                 "+ pls.getbonusPoint());
 
         }
 
 
+    }
+
+    public static class RuleController{
+
+        public static RuleTypes get_rtype() {
+            return _rtype;
+        }
+
+        public static void set_rtype(RuleTypes _rtype) {
+            RuleController._rtype = _rtype;
+        }
+
+        private static RuleTypes _rtype;
     }
 
 }

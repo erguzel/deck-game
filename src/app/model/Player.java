@@ -81,6 +81,17 @@ public class Player {
 
     private int totalLuckyTours;
 
+    /*
+    Happens when a player can throw the same card as the previous player for the first time
+     */
+    private Integer bonusPoint=0;
+
+    public void incrementBonusPoint(){bonusPoint ++;}
+
+    public int getbonusPoint(){
+
+        return bonusPoint;
+    }
     public void incrementLuckyTourNumber(){
         totalLuckyTours ++;
     }

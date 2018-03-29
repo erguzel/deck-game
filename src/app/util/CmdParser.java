@@ -16,6 +16,7 @@ public class CmdParser {
         {
             add("-np");
             add("-st");
+            add("-rt");
         }
     };
 

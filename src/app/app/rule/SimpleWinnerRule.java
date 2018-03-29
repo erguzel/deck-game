@@ -13,7 +13,7 @@ public class SimpleWinnerRule implements IRule{
 
 
     @Override
-    public void Execute(List<Player> players, List<Card> cards) {
+    public void Execute(List<Player> players, Stack<Card> cards) {
 
         while (players.get(players.size()-1).get_hand().size() != 0){
 
