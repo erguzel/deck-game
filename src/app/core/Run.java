@@ -1,7 +1,9 @@
 package app.core;
 
+import app.app.rule.RuleFactory;
 import app.app.rule.SameCardWinsRule;
 import app.app.rule.SimpleWinnerRule;
+import app.enumic.RuleTypes;
 
 public class Run {
 
@@ -11,7 +13,7 @@ public class Run {
 
         Controller.Initialize(args);
 
-        Controller.Configure(new SameCardWinsRule());
+        Controller.Configure(RuleFactory.CreateRule(RuleTypes.SameCardWins));
 
         Controller.StartGame();
 
