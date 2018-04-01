@@ -6,6 +6,7 @@ import app.enumic.RuleTypes;
 import app.model.Card;
 import app.model.Player;
 import app.util.CmdParser;
+import com.prs.main.CParser;
 
 import java.util.*;
 import java.util.concurrent.LinkedTransferQueue;
@@ -71,7 +72,12 @@ Represents the player boots playing the game.
      */
     public static void Initialize(String[] args) throws Exception {
 
-        CmdParser c = new CmdParser(args);
+        int NumOfPlayers = (Integer) CParser.Utility.getOptions().stream().findAny().get().getValues().stream().findAny().get();
+        boolean isStatistical =(Boolean) CParser.Utility.getFlags().stream().findAny().get().getValue();
+
+        Controller.setNumOfPlayers(NumOfPlayers);
+        Controller.setIsStatisticalMode(isStatistical);
+        //CmdParser c = new CmdParser(args);
         createDeck();
     }
     /*
