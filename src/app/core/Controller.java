@@ -70,7 +70,7 @@ Represents the player boots playing the game.
     /*
     Initializes the program for parameters and the Deck for the cards.
      */
-    public static void Initialize(String[] args) throws Exception {
+    public static void Initialize() throws Exception {
 
         int NumOfPlayers = (Integer) CParser.Utility.getOptions().stream().findAny().get().getValues().stream().findAny().get();
         boolean isStatistical =(Boolean) CParser.Utility.getFlags().stream().findAny().get().getValue();

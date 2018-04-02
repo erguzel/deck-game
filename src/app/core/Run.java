@@ -21,7 +21,7 @@ public class Run {
                 .submit("StatisticalDisplay")
                 .parse(args);
 
-        Controller.Initialize(args);
+        Controller.Initialize();
 
         Controller.Configure(RuleFactory.CreateRule(RuleTypes.SimpleWinnerIntelligent));
 
