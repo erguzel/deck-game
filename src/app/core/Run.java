@@ -12,12 +12,10 @@ public class Run {
 
     public static void main(String[] args) throws Exception {
 
-
-
         CParser cm = new CParser();
-        cm.AddOption("np",Integer.class, ConstraintTypes.Optional)
+        cm.AddOption("-np",Integer.class, ConstraintTypes.Optional)
                 .submit("NumberOfPlayers")
-                .AddFlag("st")
+                .AddFlag("-st")
                 .submit("StatisticalDisplay")
                 .parse(args);
 
