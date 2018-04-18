@@ -1,4 +1,8 @@
 .git
 .idea
 *.iml
-/out
+out/
+.gradle
+build
+*.jar
+*.class
