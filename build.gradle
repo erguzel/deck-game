@@ -1,0 +1,34 @@
+apply plugin: 'java'
+
+repositories {
+    maven {
+        url 'https://jitpack.io'
+    }
+}
+
+dependencies {
+    compile 'com.github.erguzel:CParser:master'
+}
+
+sourceSets {
+	
+	main.java.srcDir "src"
+	test.java.srcDir "test"
+
+}
+
+
+configurations {
+
+        jar.archiveName = 'deck.jar'
+}
+
+libsDirName = "lib"
+
+
+jar {
+        from configurations.compile.collect { zipTree it }
+        manifest.attributes "Main-Class": "app.core.Run"
+}
+
+
