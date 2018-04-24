@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.erguzel:CParser:master'
+    compile 'com.github.erguzel:cpar:master'
 }
 
 sourceSets {
