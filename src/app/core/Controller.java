@@ -6,8 +6,10 @@ import app.enumic.RuleTypes;
 import app.model.Card;
 import app.model.Player;
 import app.util.CmdParser;
+import com.prs.abstraction.interfaces.IOption;
 import com.prs.main.CParser;
 
+import javax.swing.text.html.Option;
 import java.util.*;
 import java.util.concurrent.LinkedTransferQueue;
 import java.util.stream.Collectors;
@@ -35,11 +37,11 @@ Represents the player boots playing the game.
     /*
     Represents number of total players
      */
-    private static int numOfPlayers;
+    private static int numOfPlayers = 2;// default value
     /*
     Boolean swithch to whether show the game results on screen after game.
      */
-    private static boolean _isStatisticalMode;
+    private static boolean _isStatisticalMode = false;
 
     /*
     Gets number of players included in game.
@@ -70,14 +72,30 @@ Represents the player boots playing the game.
     /*
     Initializes the program for parameters and the Deck for the cards.
      */
-    public static void Initialize() throws Exception {
+    public static void Initialize(String[] args) throws Exception {
 
-        int NumOfPlayers = (Integer) CParser.Utility.getOptions().stream().findAny().get().getValues().stream().findAny().get();
-        boolean isStatistical =(Boolean) CParser.Utility.getFlags().stream().findAny().get().getValue();
 
-        Controller.setNumOfPlayers(NumOfPlayers);
-        Controller.setIsStatisticalMode(isStatistical);
-        //CmdParser c = new CmdParser(args);
+        boolean isNumPlayerSet = CParser.Utility.getOptions().stream()
+                .anyMatch(a->a.get_expression() == "-np" & a.getValues().size() > 0);
+
+        boolean isStatistics = CParser.Utility.getFlags().stream()
+                .anyMatch(a->a.get_expression() == "-st");
+
+        if (isNumPlayerSet) {
+
+             numOfPlayers = (Integer) CParser.Utility.getOptions().stream().findAny().get().getValues().stream().findAny().get();
+            Controller.setNumOfPlayers(numOfPlayers);
+        }
+
+        if(isStatistics){
+
+            Controller.setIsStatisticalMode(isStatistics);
+
+        }
+
+
+
+
         createDeck();
     }
     /*
