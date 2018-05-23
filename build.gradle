@@ -1,13 +1,15 @@
 apply plugin: 'java'
 
-repositories {
-    maven {
-        url 'https://jitpack.io'
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
     }
 }
 
 dependencies {
     compile 'com.github.erguzel:cpar:master'
+    compile 'com.github.erguzel:abstraction:26efdfe'
+
 }
 
 sourceSets {
