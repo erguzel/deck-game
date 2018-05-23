@@ -8,7 +8,7 @@ allprojects {
 
 dependencies {
     compile 'com.github.erguzel:cpar:master'
-    compile 'com.github.erguzel:abstraction:26efdfe'
+    compile 'com.github.erguzel:abstraction:9fb8c54'
 
 }
 
