@@ -1,36 +1,17 @@
+group 'com-erg'
+version '1.0-SNAPSHOT'
+
 apply plugin: 'java'
 
-allprojects {
-    repositories {
-        maven { url 'https://jitpack.io' }
-    }
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
 }
 
 dependencies {
-    compile 'com.github.erguzel:cpar:master'
-    compile 'com.github.erguzel:abstraction:9fb8c54'
-
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile project (":abstraction")
+    compile project (":util")
+    compile project (":cpaar")
 }
-
-sourceSets {
-	
-	main.java.srcDir "src"
-	test.java.srcDir "test"
-
-}
-
-
-configurations {
-
-        jar.archiveName = 'deck.jar'
-}
-
-libsDirName = "lib"
-
-
-jar {
-        from configurations.compile.collect { zipTree it }
-        manifest.attributes "Main-Class": "app.core.Run"
-}
-
-

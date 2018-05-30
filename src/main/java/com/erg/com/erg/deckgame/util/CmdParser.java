@@ -1,6 +1,6 @@
-package app.util;
+package com.erg.com.erg.deckgame.util;
 
-import app.core.Controller;
+import com.erg.com.erg.deckgame.core.Controller;
 
 import java.util.ArrayList;
 import java.util.List;

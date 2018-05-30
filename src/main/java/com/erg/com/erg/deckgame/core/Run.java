@@ -1,10 +1,10 @@
-package app.core;
+package com.erg.com.erg.deckgame.core;
 
-import app.app.rule.RuleFactory;
-import app.enumic.RuleTypes;
-import com.prs.abstraction.enumic.ConstraintTypes;
-import com.prs.abstraction.interfaces.IOption;
-import com.prs.main.CParser;
+import com.erg.abst.cpaar.prepare.IParserStarter;
+import com.erg.com.erg.deckgame.rule.RuleFactory;
+import com.erg.abst.deckgame.RuleTypes;
+import com.erg.cpaar.prepare.ParseStarter;
+
 
 public class Run {
 
@@ -12,14 +12,14 @@ public class Run {
 
     public static void main(String[] args) throws Exception {
 
-        CParser cm = new CParser();
-        cm.AddOption("-np",Integer.class, ConstraintTypes.Optional)
+        IParserStarter ps = new ParseStarter();
+        ps.addOption("-np",Integer.class,true)
                 .submit("NumberOfPlayers")
-                .AddFlag("-st")
-                .submit("StatisticalDisplay")
+                .addFlag("-st")
+                .submit("IsStatistics")
                 .parse(args);
 
-        Controller.Initialize(args);
+        Controller.Initialize();
 
         Controller.Configure(RuleFactory.CreateRule(RuleTypes.SimpleWinnerIntelligent));
 

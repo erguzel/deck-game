@@ -1,4 +1,7 @@
-package app.model;
+package com.erg.com.erg.deckgame.model;
+
+import com.erg.abst.deckgame.ICard;
+import com.erg.abst.deckgame.IPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +10,7 @@ import java.util.Stack;
 /*
 Represents a unique game player
  */
-public class Player {
+public class Player implements IPlayer {
     /*
     Gets the name of the player
      */
@@ -33,7 +36,7 @@ public class Player {
     /*
     Gets the current cards that the player holds in hand
      */
-    public Stack<Card> get_hand() {
+    public Stack<ICard> get_hand() {
         return _hand;
     }
 
@@ -43,11 +46,11 @@ public class Player {
     /*
     Represents the cars that player holds in hand
      */
-    private Stack<Card> _hand = new Stack<Card>();
+    private Stack<ICard> _hand = new Stack<ICard>();
     /*
     Represents the cars the player collected after winning
      */
-    private List<Card> _pile = new ArrayList<>();
+    private List<ICard> _pile = new ArrayList<>();
 
     /*
     Gets total point of a player in any time of the gane
@@ -60,18 +63,18 @@ public class Player {
     /*
     Gets a card passed by dealer
      */
-    public void acceptCard(Card card) {
+    public void acceptCard(ICard card) {
 
         this._hand.add(card);
 
     }
 
-    public Card throwCard() {
+    public ICard throwCard() {
 
        return _hand.pop();
     }
 
-    public Card throwCardByRule(Card previousCard) throws Exception {
+    public ICard throwCardByRule(ICard previousCard) throws Exception {
 
         throw new Exception("not implemented");
 
@@ -85,7 +88,7 @@ public class Player {
     /*
     Adds a collected of cards to the pile after a winning tour
      */
-    public void addPile(List<Card> crds){
+    public void addPile(List<ICard> crds){
 
         _pile.addAll(crds);
     }

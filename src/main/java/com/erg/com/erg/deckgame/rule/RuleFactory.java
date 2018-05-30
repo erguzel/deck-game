@@ -1,7 +1,7 @@
-package app.app.rule;
+package com.erg.com.erg.deckgame.rule;
 
-import app.abstraction.IRule;
-import app.enumic.RuleTypes;
+import com.erg.abst.deckgame.IRule;
+import com.erg.abst.deckgame.RuleTypes;
 
 /*
 Represents the factory for creating different rule parameters programmatically

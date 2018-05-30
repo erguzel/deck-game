@@ -1,12 +1,13 @@
-package app.model;
+package com.erg.com.erg.deckgame.model;
 
-import app.enumic.CardTypes;
-import app.enumic.RankTypes;
+import com.erg.abst.deckgame.CardTypes;
+import com.erg.abst.deckgame.ICard;
+import com.erg.abst.deckgame.RankTypes;
 
 /*
 Represents a unique bundle card
  */
-public class Card {
+public class Card implements ICard{
     /*
     Represenst the power number of the card (0 to 12)
      */

@@ -1,18 +1,12 @@
-package app.core;
+package com.erg.com.erg.deckgame.core;
 
-import app.abstraction.IRule;
-import app.enumic.CardTypes;
-import app.enumic.RuleTypes;
-import app.model.Card;
-import app.model.Player;
-import app.util.CmdParser;
-import com.prs.abstraction.interfaces.IOption;
-import com.prs.main.CParser;
+import com.erg.abst.deckgame.*;
+import com.erg.com.erg.deckgame.model.Card;
+import com.erg.com.erg.deckgame.model.Player;
+import com.erg.cpaar.data.Outputs;
 
-import javax.swing.text.html.Option;
+
 import java.util.*;
-import java.util.concurrent.LinkedTransferQueue;
-import java.util.stream.Collectors;
 
 /*
 Represents the main controller of all dynammic units of the application
@@ -29,7 +23,7 @@ public class Controller {
     /*
 Represents the player boots playing the game.
     */
-    private static List<Player> _players = new ArrayList<Player>();
+    private static List<IPlayer> _players = new ArrayList<IPlayer>();
     /*
     Represents a game rule
      */
@@ -60,41 +54,22 @@ Represents the player boots playing the game.
     /*
     Represents a genuine deck card bundle.
      */
-    private static Stack<Card> _bundle = new Stack<Card>();
+    private static Stack<ICard> _bundle = new Stack<ICard>();
 
     /*
     Gets current game members/players.
      */
-    public static List<Player> get_players() {
+    public static List<IPlayer> get_players() {
         return _players;
     }
 
     /*
     Initializes the program for parameters and the Deck for the cards.
      */
-    public static void Initialize(String[] args) throws Exception {
+    public static void Initialize() throws Exception {
 
-
-        boolean isNumPlayerSet = CParser.Utility.getOptions().stream()
-                .anyMatch(a->a.get_expression() == "-np" & a.getValues().size() > 0);
-
-        boolean isStatistics = CParser.Utility.getFlags().stream()
-                .anyMatch(a->a.get_expression() == "-st");
-
-        if (isNumPlayerSet) {
-
-             numOfPlayers = (Integer) CParser.Utility.getOptions().stream().findAny().get().getValues().stream().findAny().get();
-            Controller.setNumOfPlayers(numOfPlayers);
-        }
-
-        if(isStatistics){
-
-            Controller.setIsStatisticalMode(isStatistics);
-
-        }
-
-
-
+        Controller.setNumOfPlayers((int)Outputs.options.get("NumberOfPlayers").get(0));
+        Controller.setIsStatisticalMode(Outputs.flags.get("IsStatistics"));
 
         createDeck();
     }
@@ -176,13 +151,13 @@ Represents the player boots playing the game.
     /*
     Gets the genuine card bundle.
      */
-    public static Stack<Card> getBundle() {
+    public static Stack<ICard> getBundle() {
         return _bundle;
     }
     /*
     Pops a card in the stack collection.
      */
-    public static Card popCard() {
+    public static ICard popCard() {
 
         return _bundle.pop();
 
@@ -191,7 +166,7 @@ Represents the player boots playing the game.
     /*
     Pass the genuine numbers among the number of players.
      */
-    private static void passCards(Stack<Card> deckk) {
+    private static void passCards(Stack<ICard> deckk) {
 
         for (int a = 0; a < Controller._DeckSize; a++) {
 
@@ -225,7 +200,7 @@ Represents the player boots playing the game.
 
         System.out.println("PlayerName      TotalLuckyTours     TotalCollectedCards     TotalBonusPoints");
 
-        for (Player pls : _players) {
+        for (IPlayer pls : _players) {
 
             System.out.println(pls.get_name() + "      " + pls.getTotalLuckyTours() + "               " + pls.getTotalCardsCollected() + "                                 " + pls.getbonusPoint());
 

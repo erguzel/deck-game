@@ -1,9 +1,10 @@
-package app.app.rule;
+package com.erg.com.erg.deckgame.rule;
 
-import app.abstraction.IRule;
-import app.core.Controller;
-import app.model.Card;
-import app.model.Player;
+import com.erg.abst.deckgame.ICard;
+import com.erg.abst.deckgame.IPlayer;
+import com.erg.abst.deckgame.IRule;
+import com.erg.com.erg.deckgame.model.Card;
+import com.erg.com.erg.deckgame.model.Player;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -14,16 +15,16 @@ Each player pops their card without thinking,
 If the card number matches the previous car number, the player wins the cards on table.
 Process runs till all player cards consumed.
  */
-public class SameCardWinsRule implements IRule{
+public class SameCardWinsRule implements IRule {
 
     @Override
-    public void Execute(List<Player> players, Stack<Card> tableCards) {
+    public void Execute(List<IPlayer> players, Stack<ICard> tableCards) {
 
-        Card playerCard = null;
+        ICard playerCard = null;
 
         while (players.get(players.size()-1).get_hand().size() != 0){
 
-            for (Player pl : players) {
+            for (IPlayer pl : players) {
 
                 if (tableCards.isEmpty()){
 

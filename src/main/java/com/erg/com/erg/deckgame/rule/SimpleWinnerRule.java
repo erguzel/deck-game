@@ -1,10 +1,12 @@
-package app.app.rule;
+package com.erg.com.erg.deckgame.rule;
 
 
-import app.abstraction.IRule;
-import app.model.Card;
-import app.model.Player;
-import app.core.Controller;
+import com.erg.abst.deckgame.ICard;
+import com.erg.abst.deckgame.IPlayer;
+import com.erg.abst.deckgame.IRule;
+import com.erg.com.erg.deckgame.model.Card;
+import com.erg.com.erg.deckgame.model.Player;
+import com.erg.com.erg.deckgame.core.Controller;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -15,17 +17,17 @@ Each player throws their card first,
 Than whose card is the biggest numbered, it wins
 Process runs till all player cards consumed
  */
-public class SimpleWinnerRule implements IRule{
+public class SimpleWinnerRule implements IRule {
 
 
     @Override
-    public void Execute(List<Player> players, Stack<Card> cards) {
+    public void Execute(List<IPlayer> players, Stack<ICard> cards) {
 
         while (players.get(players.size()-1).get_hand().size() != 0){
 
-            for (Player pl : players) {
+            for (IPlayer pl : players) {
 
-                Card playerCard = pl.throwCard();
+                ICard playerCard = pl.throwCard();
 
                 System.out.println(pl.toString() + " throws " + playerCard.toString());
 
@@ -40,11 +42,11 @@ public class SimpleWinnerRule implements IRule{
 
                 if (cards.size() == Controller.getNumOfPlayers()) {
 
-                    Card winnerCard=cards.stream().max(Comparator.comparing(Card::get_id)).get();
+                    ICard winnerCard=cards.stream().max(Comparator.comparing(ICard::get_id)).get();
 
                     int winnerId = cards.indexOf(winnerCard);
 
-                    Player winnerPlayer = Controller.get_players().get(winnerId);
+                    IPlayer winnerPlayer = Controller.get_players().get(winnerId);
 
                     winnerPlayer.addPile(cards.stream().collect(Collectors.toList()));
                     winnerPlayer.incrementLuckyTourNumber();

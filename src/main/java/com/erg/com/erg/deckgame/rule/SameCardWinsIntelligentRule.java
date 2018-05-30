@@ -1,8 +1,10 @@
-package app.app.rule;
+package com.erg.com.erg.deckgame.rule;
 
-import app.abstraction.IRule;
-import app.model.Card;
-import app.model.Player;
+import com.erg.abst.deckgame.ICard;
+import com.erg.abst.deckgame.IPlayer;
+import com.erg.abst.deckgame.IRule;
+import com.erg.com.erg.deckgame.model.Card;
+import com.erg.com.erg.deckgame.model.Player;
 
 import java.util.List;
 import java.util.Stack;
@@ -18,14 +20,14 @@ Process runs till all player cards consumed.
 public class SameCardWinsIntelligentRule implements IRule {
 
     @Override
-    public void Execute(List<Player> players, Stack<Card> gameObject) {
-        Card playerCard = null;
+    public void Execute(List<IPlayer> players, Stack<ICard> gameObject) {
+        ICard playerCard = null;
         /*
         run logic till the last card of last player
          */
         while (players.get(players.size() - 1).get_hand().size() != 0) {
 
-            for (Player pl : players) {
+            for (IPlayer pl : players) {
 
                 if (gameObject.isEmpty()) {
 
@@ -42,7 +44,7 @@ public class SameCardWinsIntelligentRule implements IRule {
                      */
                 if (pl.get_hand().stream().anyMatch(a -> a.get_id() == gameObject.peek().get_id())) {
 
-                    Card winnerCard = pl.get_hand().stream().filter(a -> a.get_id() == gameObject.peek().get_id()).findFirst().get();
+                    ICard winnerCard = pl.get_hand().stream().filter(a -> a.get_id() == gameObject.peek().get_id()).findFirst().get();
 
                     pl.get_hand().remove(winnerCard);
 
