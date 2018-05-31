@@ -1,8 +1,8 @@
-package com.erg.com.erg.deckgame.core;
+package com.erg.deckgame.core;
 
 import com.erg.abst.deckgame.*;
-import com.erg.com.erg.deckgame.model.Card;
-import com.erg.com.erg.deckgame.model.Player;
+import com.erg.deckgame.model.Card;
+import com.erg.deckgame.model.Player;
 import com.erg.cpaar.data.Outputs;
 
 

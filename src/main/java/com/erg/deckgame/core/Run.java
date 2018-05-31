@@ -1,9 +1,10 @@
-package com.erg.com.erg.deckgame.core;
+package com.erg.deckgame.core;
 
 import com.erg.abst.cpaar.prepare.IParserStarter;
-import com.erg.com.erg.deckgame.rule.RuleFactory;
-import com.erg.abst.deckgame.RuleTypes;
 import com.erg.cpaar.prepare.ParseStarter;
+import com.erg.deckgame.rule.RuleFactory;
+import com.erg.abst.deckgame.RuleTypes;
+
 
 
 public class Run {

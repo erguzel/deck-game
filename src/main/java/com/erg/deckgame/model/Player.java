@@ -1,4 +1,4 @@
-package com.erg.com.erg.deckgame.model;
+package com.erg.deckgame.model;
 
 import com.erg.abst.deckgame.ICard;
 import com.erg.abst.deckgame.IPlayer;

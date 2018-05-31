@@ -1,12 +1,10 @@
-package com.erg.com.erg.deckgame.rule;
+package com.erg.deckgame.rule;
 
 
 import com.erg.abst.deckgame.ICard;
 import com.erg.abst.deckgame.IPlayer;
 import com.erg.abst.deckgame.IRule;
-import com.erg.com.erg.deckgame.model.Card;
-import com.erg.com.erg.deckgame.model.Player;
-import com.erg.com.erg.deckgame.core.Controller;
+import com.erg.deckgame.core.Controller;
 
 import java.util.*;
 import java.util.stream.Collectors;

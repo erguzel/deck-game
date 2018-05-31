@@ -1,4 +1,4 @@
-package com.erg.com.erg.deckgame.rule;
+package com.erg.deckgame.rule;
 
 import com.erg.abst.deckgame.IRule;
 import com.erg.abst.deckgame.RuleTypes;
