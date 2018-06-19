@@ -9,8 +9,6 @@ import com.erg.abst.deckgame.RuleTypes;
 
 public class Run {
 
-
-
     public static void main(String[] args) throws Exception {
 
         IParserStarter ps = new ParseStarter();
@@ -30,16 +28,6 @@ public class Run {
 
             Controller.RunStatistics();
         }
-
-        System.out.println("Everything is okay");
-
-
-
-
-
-
-
-
 
     }
 }
