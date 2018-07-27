@@ -1,8 +1,8 @@
 package com.erg.deckgame.rule;
 
-import com.erg.abst.deckgame.ICard;
-import com.erg.abst.deckgame.IPlayer;
-import com.erg.abst.deckgame.IRule;
+import com.erg.deckgame.abstraction.ICard;
+import com.erg.deckgame.abstraction.IPlayer;
+import com.erg.deckgame.abstraction.IRule;
 
 import java.util.*;
 import java.util.stream.Collectors;

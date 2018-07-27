@@ -1,9 +1,9 @@
 package com.erg.deckgame.core;
 
-import com.erg.abst.cpaar.prepare.IParserStarter;
+import com.erg.cpaar.abstraction.prepare.IParserStarter;
 import com.erg.cpaar.prepare.ParseStarter;
 import com.erg.deckgame.rule.RuleFactory;
-import com.erg.abst.deckgame.RuleTypes;
+import com.erg.deckgame.abstraction.RuleTypes;
 
 
 
@@ -11,7 +11,7 @@ public class Run {
 
     public static void main(String[] args) throws Exception {
 
-        IParserStarter ps = new ParseStarter();
+        IParserStarter ps = (IParserStarter) new ParseStarter();
         ps.addOption("-np",Integer.class,true)
                 .submit("NumberOfPlayers")
                 .addFlag("-st")

@@ -1,7 +1,7 @@
 package com.erg.deckgame.model;
 
-import com.erg.abst.deckgame.ICard;
-import com.erg.abst.deckgame.IPlayer;
+import com.erg.deckgame.abstraction.ICard;
+import com.erg.deckgame.abstraction.IPlayer;
 
 import java.util.ArrayList;
 import java.util.List;

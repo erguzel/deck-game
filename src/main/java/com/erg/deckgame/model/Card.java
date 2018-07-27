@@ -1,8 +1,8 @@
 package com.erg.deckgame.model;
 
-import com.erg.abst.deckgame.CardTypes;
-import com.erg.abst.deckgame.ICard;
-import com.erg.abst.deckgame.RankTypes;
+import com.erg.deckgame.abstraction.CardTypes;
+import com.erg.deckgame.abstraction.ICard;
+import com.erg.deckgame.abstraction.RankTypes;
 
 /*
 Represents a unique bundle card
