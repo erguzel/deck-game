@@ -1,11 +1,12 @@
 package com.erg.deckgame.core;
 
+import com.erg.cpaar.ParserStarter;
 import com.erg.deckgame.abstraction.*;
 import com.erg.deckgame.model.Card;
 import com.erg.deckgame.model.Player;
-import com.erg.cpaar.data.Outputs;
 
 
+import java.lang.reflect.Parameter;
 import java.util.*;
 
 /*
@@ -68,8 +69,8 @@ Represents the player boots playing the game.
      */
     public static void Initialize() throws Exception {
 
-        Controller.setNumOfPlayers((int)Outputs.options.get("NumberOfPlayers").get(0));
-        Controller.setIsStatisticalMode(Outputs.flags.get("IsStatistics"));
+        Controller.setNumOfPlayers(Integer.parseInt(ParserStarter.ParsedOutputs.CmdOptions.get("NumberOfPlayers").get(0).toString()));
+        Controller.setIsStatisticalMode(ParserStarter.ParsedOutputs.CmdFlags.get("IsStatistics"));
 
         createDeck();
     }
